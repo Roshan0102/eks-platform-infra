@@ -4,8 +4,7 @@ resource "aws_vpc" "this" {
   enable_dns_hostnames = true
 
   tags = {
-    Name        = "${var.project_name}-${var.environment}-vpc"
-    Environment = var.environment
+    Name        = "${var.project_name}-vpc"
     ManagedBy   = "terraform"
   }
 }
@@ -14,7 +13,7 @@ resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-igw"
+    Name = "${var.project_name}-igw"
   }
 }
 
@@ -27,7 +26,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-public-subnet-${count.index + 1}"
+    Name = "${var.project_name}-public-subnet-${count.index + 1}"
 
     Type = "public"
 
@@ -45,13 +44,15 @@ resource "aws_subnet" "private" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-private-subnet-${count.index + 1}"
+    Name = "${var.project_name}-private-subnet-${count.index + 1}"
 
     Type = "private"
 
     "kubernetes.io/role/internal-elb" = "1"
 
     "kubernetes.io/cluster/${var.project_name}-eks" = "shared"
+
+    "karpenter.sh/discovery" = "${var.project_name}-eks"
   }
 }
 
@@ -59,7 +60,7 @@ resource "aws_eip" "nat" {
   domain = "vpc"
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-nat-eip"
+    Name = "${var.project_name}-nat-eip"
   }
 }
 
@@ -70,7 +71,7 @@ resource "aws_nat_gateway" "this" {
   depends_on = [aws_internet_gateway.this]
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-nat-gateway"
+    Name = "${var.project_name}-nat-gateway"
   }
 }
 
@@ -83,7 +84,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-public-rt"
+    Name = "${var.project_name}-public-rt"
   }
 }
 
@@ -96,7 +97,7 @@ resource "aws_route_table" "private" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-private-rt"
+    Name = "${var.project_name}-private-rt"
   }
 }
 

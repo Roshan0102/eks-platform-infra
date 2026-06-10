@@ -1,7 +1,5 @@
 aws_region = "us-east-1"
 
-environment = "dev"
-
 project_name = "kncp"
 vpc_cidr     = "10.0.0.0/16"
 
@@ -21,5 +19,17 @@ availability_zones = [
 ]
 
 
+cluster_name = "kncp-eks"
 
+cluster_version = "1.32"
+
+node_instance_type = "m7i-flex.large"
+
+desired_capacity = 2
+min_capacity     = 2
+max_capacity     = 5
+
+domain_name = "pramod-leveling.space"
+
+argocd_subdomain = "argocd"
 

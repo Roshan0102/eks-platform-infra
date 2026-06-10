@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "terraform_state" {
   bucket = "${var.project_name}-tf-state"
 
   tags = {
-    Name        = "${var.project_name}-tf-state"
+    Name        = "${var.project_name}-tf-state-file"
     ManagedBy   = "terraform"
     Purpose     = "terraform-backend"
     Environment = "shared"
