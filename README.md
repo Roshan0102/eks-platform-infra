@@ -26,7 +26,7 @@ Welcome to the central Infrastructure as Code (IaC) repository for the Kubernete
 
 This infrastructure repository works in tandem with our application and GitOps repositories to deliver a complete CI/CD lifecycle:
 
-*   🏗️ **Infrastructure Repo (Current):** [Roshan0102/eks-platform-infra](https://github.com/Roshan0102/eks-platform-infra)
+*   🏗️ **Application Repo :** https://github.com/Roshan0102/online-boutique-app
 *   🚀 **GitOps & App Delivery Repo:** [Roshan0102/online-boutique-gitops](https://github.com/Roshan0102/online-boutique-gitops)
 
 ## 🚀 Getting Started
