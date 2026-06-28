@@ -27,7 +27,7 @@ Welcome to the central Infrastructure as Code (IaC) repository for the Kubernete
 This infrastructure repository works in tandem with our application and GitOps repositories to deliver a complete CI/CD lifecycle:
 
 *   🏗️ **Application Repo :** https://github.com/Roshan0102/online-boutique-app
-*   🚀 **GitOps & App Delivery Repo:** [Roshan0102/online-boutique-gitops](https://github.com/Roshan0102/online-boutique-gitops)
+*   🚀 **GitOps Repo:** [Roshan0102/online-boutique-gitops](https://github.com/Roshan0102/online-boutique-gitops)
 
 ## 🚀 Getting Started
 
